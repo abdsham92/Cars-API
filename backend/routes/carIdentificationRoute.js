@@ -1,8 +1,9 @@
-const express = require('express')
-const router = express.Router()
+import express from 'express'
+import { getCarIdentification, postCarIdentification } from '../controllers/carIdentificationController.js'
 
-const {getCarIdentification} = require('../controllers/carIdentificationController')
+const myAppRouter = express.Router()
 
-router.route('/api/carIdentification').get(getCarIdentification)
+myAppRouter.route('/api/carIdentification').get(getCarIdentification)
+myAppRouter.route('/api/carIdentification').post(postCarIdentification)
 
-module.exports = router
+export default myAppRouter
