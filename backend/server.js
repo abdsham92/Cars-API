@@ -9,12 +9,13 @@ import connectDB from './config/db.js'
 dotenv.config();
 const port = process.env.PORT
 
-// establish a connection to the DB
-connectDB()
-
+// initialize my expressJS/NodeJS API application
 const app = express()
 
 app.use(express.json())
 app.use(myAppRouter)
+
+// establish a connection to the DB
+connectDB()
 
 app.listen(port, () => console.log(colors.yellow(`Server has started on port ${port}`)))

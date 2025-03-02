@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import myMongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const Schema = myMongoose.Schema
 export const makeModelQuery = "make"
 
 const makeModelSchema = new Schema({
@@ -13,6 +13,6 @@ const makeModelSchema = new Schema({
   ]
 })
 
-const makeModel = mongoose.model('makeModel', makeModelSchema)
+const makeModel = myMongoose.model('makeModel', makeModelSchema)
 
 export default makeModel

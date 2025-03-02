@@ -10,7 +10,7 @@ async function connectDB() {
     // create a connection to the database
     const connection = await mongoose.connect(uri)
     // output when the connection is successful
-    console.log(`A new connection to MongoDB!: Connection No. ${connection.connection.readyState}`.cyan)
+    console.log("Connecting to MongoDB".cyan)
   } catch (error) {
     // console log on error
     console.log(error)
