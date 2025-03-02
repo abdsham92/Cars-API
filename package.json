@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "description": "Cars API Job Interview",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon -L backend/server.js"
   },
   "author": "Abdullah Shambour",
-  "license": "ISC",
+  "license": "GPLv2",
   "dependencies": {
     "colors": "^1.4.0",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "express": "^5.0.0",
     "mongoose": "^8.11.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "nodemon": "^3.1.9"
   }
 }

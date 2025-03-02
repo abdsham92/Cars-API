@@ -3,9 +3,16 @@
 ## Setting up the project
 
 ```bash
+# https://github.com/nodesource/distributions/blob/master/README.md
+
+curl -fsSL https://deb.nodesource.com/setup_23.x -o nodesource_setup.sh
+sudo -E bash nodesource_setup.sh
 sudo apt-get install nodejs
-sudo apt-get install npm
-npm init #inside the project's directory
+node -v
+sudo npm install -g npm@11.1.0
+npm -v
+
+npm init #execute inside the project's directory
 ```
 
 ### Production dependencies
@@ -39,4 +46,5 @@ You need to add the `.env` file to the root directory of the project. The `.env`
 ```env
 NODE_ENV = development
 PORT = 5000
+MONGO_URI = XXXX
 ```
