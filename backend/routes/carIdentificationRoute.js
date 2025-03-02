@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const {getCarIdentification} = require('../controllers/carIdentificationController')
 
-router.get('/', (req, res) => {
-    
-})
+router.route('/api/carIdentification').get(getCarIdentification)
 
 module.exports = router

@@ -4,6 +4,6 @@ const port = process.env.PORT
 
 const app = express()
 
-app.use('/api/carIdentification', require('./routes/carIdentificationRoute'))
+app.use(require('./routes/carIdentificationRoute'))
 
 app.listen(port, () => console.log(`My Server has started port ${port}`))
