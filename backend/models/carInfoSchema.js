@@ -2,10 +2,11 @@ import myMongoose from "mongoose"
 
 const Schema = myMongoose.Schema
 
-const carModelsSchema = new Schema(
+const carInfoSchema = new Schema(
   {
     _id: { type: String, required: true }, // allows using a custom document ID
     nextProperty: { type: String, required: true },
+    model: { type: String, required: true },
     options: [
       {
         label: { type: String, required: true },
@@ -17,6 +18,6 @@ const carModelsSchema = new Schema(
   { versionKey: false } // Disables the `__v` field
 )
 
-const carModels = myMongoose.model("car model", carModelsSchema)
+const carInfo = myMongoose.model("car info", carInfoSchema)
 
-export default carModels
+export default carInfo
