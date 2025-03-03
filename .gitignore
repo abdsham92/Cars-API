@@ -129,6 +129,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+/.vscode
+/.vscode/*
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
