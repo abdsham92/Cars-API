@@ -1,9 +1,10 @@
-import express from 'express'
-import { getCarIdentification, postCarIdentification } from '../controllers/carIdentificationController.js'
+import express from "express"
+import getCarIdentification from "../controllers/carIdentificationController.js"
 
-const myAppRouter = express.Router()
+const carIdentificationRouter = express.Router()
 
-myAppRouter.route('/api/carIdentification').get(getCarIdentification)
-myAppRouter.route('/api/carIdentification').post(postCarIdentification)
+carIdentificationRouter
+  .route("/api/carIdentification")
+  .get(getCarIdentification)
 
-export default myAppRouter
+export default carIdentificationRouter
