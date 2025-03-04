@@ -5,7 +5,7 @@ const Schema = myMongoose.Schema
 const carInfoSchema = new Schema(
   {
     _id: { type: String, required: true }, // allows using a custom document ID
-    nextProperty: { type: String, required: true },
+    nextProperty: { type: String, required: false, default: null },
     model: { type: String, required: true },
     options: [
       {
