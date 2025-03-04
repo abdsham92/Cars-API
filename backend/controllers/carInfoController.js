@@ -1,12 +1,12 @@
 import carInfo from "../models/carInfoSchema.js"
 
-// @desc Add Car Models
+// @desc Add Car Info
 // @route POST /api/carInfo
 // @access Public
 const postCarInfo = async (req, res) => {
   try {
     const { _id, model, nextProperty, options } = req.body
-    if (!_id || !model || !nextProperty || !options.length) {
+    if (!_id || !model || !options.length) {
       return res.status(400).json({
         status: "400",
         message: "Bad Request!",
