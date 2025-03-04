@@ -1,9 +1,37 @@
 import carModels from "../models/carModelsSchema.js"
 
+// @desc Retrieve Car Models
+// @route GET /api/carModels
+// @access Public
+export const getCarModels = async (req, res) => {
+  // define allowed queries
+  const allowedQueries = [
+    "make",
+    "model",
+    "registrationMonth",
+    "registrationYear",
+  ]
+
+  // ?type=query
+  const { type } = req.query
+  console.log(`A GET request has been made using the query: ${type}`)
+
+  const result = await carModels.findOne()
+
+  if (type && result && allowedQueries.includes(type)) {
+    res.status(201).json(result)
+  } else {
+    res.status(400).json({
+      status: "400",
+      message: "Bad Request!",
+    })
+  }
+}
+
 // @desc Add Car Models
 // @route POST /api/carModels
 // @access Public
-const postCarModels = async (req, res) => {
+export const postCarModels = async (req, res) => {
   try {
     const { _id, nextProperty, options } = req.body
     if (!_id || !nextProperty || !options.length) {
@@ -35,5 +63,3 @@ const postCarModels = async (req, res) => {
     })
   }
 }
-
-export default postCarModels
