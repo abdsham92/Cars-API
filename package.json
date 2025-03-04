@@ -9,7 +9,7 @@
     "server": "nodemon -L backend/server.js"
   },
   "author": "Abdullah Shambour",
-  "license": "GPLv2",
+  "license": "UNLICENSED",
   "dependencies": {
     "colors": "^1.4.0",
     "dotenv": "^16.4.7",

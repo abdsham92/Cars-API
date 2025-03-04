@@ -36,6 +36,34 @@ npm install --save-dev nodemon # allows the auto-restart of the server on file m
 npm install --save-dev @types/express # removes the warning from the express import
 ```
 
+### Frontend
+
+```bash
+sudo npm install -g yarn
+yarn create vite frontend --template react
+cd frontend
+yarn install
+```
+
+Fix a bug with Vite on WSL2, modify `vite.config.js`:
+
+```js
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    watch: {
+      usePolling: true,
+    },
+  },
+})
+```
+
+now start the frontend server
+
+```bash
+yarn run dev
+```
+
 ## Development
 
 If you cloned the project and want to use it:
