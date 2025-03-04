@@ -18,7 +18,7 @@ const app = express()
 // allow the server to accept raw JSON requests
 app.use(express.json())
 
-// recognized routes by the API
+// recognized routes by the API server
 app.use(carIdentificationRouter)
 app.use(carModelsRouter)
 app.use(carInfoRouter)
