@@ -1,33 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react"
+import "./App.css"
+
+const CAR_MODELS_API_CALL = "http://localhost:5000/api/carModels?type=make"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [models, setModels] = useState([])
+  const [selectedBrand, setSelectedBrand] = useState(() => {
+    return localStorage.getItem("selectedBrand")
+  })
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const carModelsResult = await fetch(CAR_MODELS_API_CALL)
+        const json = await carModelsResult.json()
+        setModels(json.options)
+      } catch (error) {
+        console.error("Error fetching car models:", error)
+      }
+    }
+    fetchData()
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("selectedBrand", selectedBrand)
+  }, [selectedBrand])
+
+  const handleReset = () => {
+    setSelectedBrand("")
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h2>AutoWelt Coding Challenge: Cars API</h2>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <p>Choose the brand of your car</p>
+
+        <select
+          value={selectedBrand}
+          onChange={(e) => setSelectedBrand(e.target.value)}>
+
+          <option value="" disabled>
+            Select Brand
+          </option>
+
+          {models?.map((carModel, index) => (
+            <option key={index} value={carModel.label}>
+              {carModel.label}
+            </option>
+
+          ))}
+        </select>
+
+        <br />
+        <br />
+
+        <button onClick={handleReset}>Reset</button>
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
