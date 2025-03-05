@@ -34,7 +34,7 @@ export const getCarModels = async (req, res) => {
 export const postCarModels = async (req, res) => {
   try {
     const { _id, nextProperty, options } = req.body
-    if (!_id || !nextProperty || !options.length) {
+    if (!_id || !options.length) {
       return res.status(400).json({
         status: "400",
         message: "Bad Request",
