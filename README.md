@@ -27,6 +27,7 @@ npm install express # our nodeJS API request server
 npm install dotenv # allows using a .env file and reading/parsing it
 npm install mongoose # allows working with mongoDB and modeling the data/schema
 npm install colors # allows coloring the console log outputs
+npm install cors # configure cross-origin options
 ```
 
 ### Development dependencies

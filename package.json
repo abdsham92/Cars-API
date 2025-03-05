@@ -12,6 +12,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.0.0",
     "mongoose": "^8.11.0"

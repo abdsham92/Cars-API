@@ -1,4 +1,5 @@
 import express from "express"
+import cors from "cors"
 import dotenv from "dotenv"
 import colors from "colors"
 
@@ -14,6 +15,10 @@ const port = process.env.PORT
 
 // initialize my expressJS/NodeJS API application
 const app = express()
+
+// enable CORS to allow all origins
+// https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
+app.use(cors())
 
 // allow the server to accept raw JSON requests
 app.use(express.json())
