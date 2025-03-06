@@ -28,6 +28,64 @@ function App() {
 
   // -----------useStates/variables/setters... END---------------------------------------------------------
 
+  // ---------- useEffects/functions/methods... START -----------------------------------------------------------------------------
+
+  // useEffects
+
+  // fetch available brands from the backend API (Audi, BMW, VW)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const carBrandsResponse = await fetch(
+          "http://localhost:5000/api/carModels?type=make"
+        )
+        const carBrandsData = await carBrandsResponse.json()
+        setBrand(carBrandsData.options)
+      } catch (error) {
+        console.error("Error fetching car brands:", error)
+      }
+    }
+    fetchData()
+  }, [])
+
+  // fetch the available brand details from the backend API
+  useEffect(() => {
+    const fetchCarDetails = async () => {
+      if (!selectedBrand) return console.log("Brand selection is empty!")
+      try {
+        const carDetailsResponse = await fetch(
+          `http://localhost:5000/api/carIdentification?model=${selectedBrand}`
+        )
+        const carDetailsData = await carDetailsResponse.json()
+        setCarDetails(carDetailsData)
+      } catch (error) {
+        console.error("Error fetching car details:", error)
+      }
+    }
+    fetchCarDetails()
+  }, [selectedBrand])
+
+  // use local storage for the model
+  useEffect(() => {
+    localStorage.setItem("selectedBrand", selectedBrand)
+  }, [selectedBrand])
+
+  // use local storage for the identification
+  useEffect(() => {
+    localStorage.setItem("selectedModel", selectedModel)
+  }, [selectedModel])
+
+  // handles the reset button action
+  const handleReset = () => {
+    setSelectedBrand("")
+    setSelectedModel("")
+    setCarDetails([])
+    localStorage.removeItem("selectedBrand")
+    localStorage.removeItem("selectedModel")
+  }
+
+  // ---------- useEffects/functions/methods... END -----------------------------------------------------------------------------
+
   return (
     <>
     </>
