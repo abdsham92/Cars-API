@@ -4,13 +4,8 @@ import carModels from "../models/carModelsSchema.js"
 // @route GET /api/carModels
 // @access Public
 export const getCarModels = async (req, res) => {
-  // define allowed queries
-  const allowedQueries = [
-    "make",
-    "model",
-    "registrationMonth",
-    "registrationYear",
-  ]
+  // define allowed query
+  const allowedQuery = "make"
 
   // ?type=query
   const { type } = req.query
@@ -18,7 +13,7 @@ export const getCarModels = async (req, res) => {
 
   const result = await carModels.findOne()
 
-  if (type && result && allowedQueries.includes(type)) {
+  if (type && result && allowedQuery == type) {
     res.status(201).json(result)
   } else {
     res.status(400).json({

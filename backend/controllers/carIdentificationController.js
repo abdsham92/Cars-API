@@ -8,7 +8,7 @@ const host = process.env.SERVER_HOST
 const port = process.env.PORT
 
 // @desc Retrieve Car Identification
-// @route POST /api/carIdentification
+// @route GET /api/carIdentification
 // @access Public
 const getCarIdentification = async (req, res) => {
   // define allowed queries

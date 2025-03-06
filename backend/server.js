@@ -20,7 +20,7 @@ const app = express()
 // https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
 app.use(cors())
 
-// allow the server to accept raw JSON requests
+// allow the server to accept JSON requests
 app.use(express.json())
 
 // recognized routes by the API server
