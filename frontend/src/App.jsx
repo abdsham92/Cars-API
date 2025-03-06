@@ -93,13 +93,15 @@ function App() {
   // Find registration month and year data for the selected brand
   
   const registrationMonthData = carDetails.find(
-    (item) => item.model === selectedBrand && item.nextProperty === "registrationMonth"
-  );
-  const registrationYearData = carDetails.find(
     (item) => item.model === selectedBrand && item.nextProperty === "registrationYear"
   );
 
+  const registrationYearData = carDetails.find(
+    (item) => item.model === selectedBrand && item.nextProperty == null
+  );
+
   const registrationMonths = registrationMonthData ? registrationMonthData.options : [];
+
   const registrationYears = registrationYearData ? registrationYearData.options : [];
 
   return (
@@ -161,8 +163,8 @@ function App() {
                 {/* Only show the first entry */}
                 {registrationMonths.slice(0, 1).map((month, index) => (
                   <tr key={index}>
-                    <td>{month.label}</td> {/* This should show "January" or the correct month */}
-                    <td>{registrationYears[index]?.label || "N/A"}</td> {/* The corresponding year */}
+                    <td>{month.label}</td> 
+                    <td>{registrationYears[index]?.label || "N/A"}</td> 
                   </tr>
                 ))}
               </tbody>
