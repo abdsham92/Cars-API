@@ -90,6 +90,18 @@ function App() {
 
 // ---------- useEffects/functions/methods... END -----------------------------------------------------------------------------
 
+  // Find registration month and year data for the selected brand
+  
+  const registrationMonthData = carDetails.find(
+    (item) => item.model === selectedBrand && item.nextProperty === "registrationMonth"
+  );
+  const registrationYearData = carDetails.find(
+    (item) => item.model === selectedBrand && item.nextProperty === "registrationYear"
+  );
+
+  const registrationMonths = registrationMonthData ? registrationMonthData.options : [];
+  const registrationYears = registrationYearData ? registrationYearData.options : [];
+
   return (
     <>
       <h2>AutoWelt Coding Challenge: Cars API</h2>
@@ -110,6 +122,53 @@ function App() {
             </option>
           ))}
         </select>
+
+        {registrationMonths.length > 0 && (
+          <>
+            <br />
+            <br />
+            <p>Select Model</p>
+            <select
+              value={selectedModel}
+              onChange={(e) => setSelectedModel(e.target.value)}
+            >
+              <option value="" disabled>
+                Select Model
+              </option>
+
+              {registrationMonths.map((model, index) => (
+                <option key={index} value={model.value}>
+                  {model.label}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
+
+        {selectedModel && (
+          <>
+            <br />
+            <br />
+            <h3>Car Details</h3>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Registration Month</th>
+                  <th>Registration Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Only show the first entry */}
+                {registrationMonths.slice(0, 1).map((month, index) => (
+                  <tr key={index}>
+                    <td>{month.label}</td> {/* This should show "January" or the correct month */}
+                    <td>{registrationYears[index]?.label || "N/A"}</td> {/* The corresponding year */}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
 
         <br />
         <button onClick={handleReset}>Reset</button>
