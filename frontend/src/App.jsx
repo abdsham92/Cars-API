@@ -1,63 +1,35 @@
+// ---------- imports... START -----------------------------------------------------------------------------
+
 import { useEffect, useState } from "react"
 import "./App.css"
 
-const CAR_MODELS_API_CALL = "http://localhost:5000/api/carModels?type=make"
+// ---------- imports... END -----------------------------------------------------------------------------
 
 function App() {
-  const [models, setModels] = useState([])
+  // -----------useStates/variables/setters... START---------------------------------------------------------
+
+  // useStates
+
+  // brand (Audi, BMW, VW)
+  const [brand, setBrand] = useState([])
+
+  // selected brand store on refresh (e.g., keep Audi selected after page refresh)
   const [selectedBrand, setSelectedBrand] = useState(() => {
     return localStorage.getItem("selectedBrand")
   })
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const carModelsResult = await fetch(CAR_MODELS_API_CALL)
-        const json = await carModelsResult.json()
-        setModels(json.options)
-      } catch (error) {
-        console.error("Error fetching car models:", error)
-      }
-    }
-    fetchData()
-  }, [])
+  // Car Identification (models, month, year)
+  const [carDetails, setCarDetails] = useState([])
 
-  useEffect(() => {
-    localStorage.setItem("selectedBrand", selectedBrand)
-  }, [selectedBrand])
+  // selected model store on refresh (e.g., keep A6 selected after page refresh)
+  const [selectedModel, setSelectedModel] = useState(() => {
+    return localStorage.getItem("selectedModel")
+  })
 
-  const handleReset = () => {
-    setSelectedBrand("")
-  }
+  // -----------useStates/variables/setters... END---------------------------------------------------------
 
   return (
     <>
-      <h2>AutoWelt Coding Challenge: Cars API</h2>
-      <div className="card">
-        <p>Choose the brand of your car</p>
-
-        <select
-          value={selectedBrand}
-          onChange={(e) => setSelectedBrand(e.target.value)}>
-
-          <option value="" disabled>
-            Select Brand
-          </option>
-
-          {models?.map((carModel, index) => (
-            <option key={index} value={carModel.label}>
-              {carModel.label}
-            </option>
-
-          ))}
-        </select>
-
-        <br />
-        <br />
-
-        <button onClick={handleReset}>Reset</button>
-
-      </div>
     </>
   )
 }

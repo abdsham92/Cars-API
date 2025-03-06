@@ -70,7 +70,7 @@ yarn run dev
 If you cloned the project and want to use it:
 
 ```bash
-npm install # this should automatically install the dependencies from `package.json`
+npm install # this should automatically install the dependencies from `package.json` and create a node_modules directory with `package-lock.json`
 ```
 
 > Note: If you are on WLS2 you need the `-L` option for `nodemon` to run it in legacy mode, otherwise it is not going to work. More info [here](https://github.com/microsoft/WSL/issues/4739) and [here](https://github.com/remy/nodemon/issues/1913)
