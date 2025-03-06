@@ -88,6 +88,28 @@ function App() {
 
   return (
     <>
+      <h2>AutoWelt Coding Challenge: Cars API</h2>
+      <div className="card">
+        <p>Choose the brand of your car</p>
+
+        <select
+          value={selectedBrand}
+          onChange={(e) => setSelectedBrand(e.target.value)}>
+          <option value="" disabled>
+            Select Brand
+          </option>
+
+          {brand?.map((carModel, index) => (
+            <option key={index} value={carModel.label}>
+              {carModel.label}
+            </option>
+          ))}
+        </select>
+
+        <br />
+        <button onClick={handleReset}>Reset</button>
+        
+      </div>
     </>
   )
 }
