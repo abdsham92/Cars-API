@@ -92,6 +92,10 @@ function App() {
 
   // Find registration month and year data for the selected brand
   
+  const availableModelData = carDetails.find(
+    (item) => item.model === selectedBrand && item.nextProperty === "registrationMonth"
+  );
+
   const registrationMonthData = carDetails.find(
     (item) => item.model === selectedBrand && item.nextProperty === "registrationYear"
   );
@@ -99,6 +103,8 @@ function App() {
   const registrationYearData = carDetails.find(
     (item) => item.model === selectedBrand && item.nextProperty == null
   );
+
+  const availableModels = availableModelData ? availableModelData.options : [];
 
   const registrationMonths = registrationMonthData ? registrationMonthData.options : [];
 
@@ -125,7 +131,7 @@ function App() {
           ))}
         </select>
 
-        {registrationMonths.length > 0 && (
+        {availableModels.length > 0 && (
           <>
             <br />
             <br />
@@ -138,7 +144,7 @@ function App() {
                 Select Model
               </option>
 
-              {registrationMonths.map((model, index) => (
+              {availableModels.map((model, index) => (
                 <option key={index} value={model.value}>
                   {model.label}
                 </option>
