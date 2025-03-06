@@ -108,7 +108,6 @@ function App() {
 
         <br />
         <button onClick={handleReset}>Reset</button>
-        
       </div>
     </>
   )
